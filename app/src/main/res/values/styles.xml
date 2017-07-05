@@ -31,4 +31,8 @@
         <item name="android:background">@color/line</item>
     </style>
 
+    <style name="custom_dialog_theme" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@color/transparent</item>//这句话不能少，否则dialog会出现黑色边框
+    </style>
+
 </resources>

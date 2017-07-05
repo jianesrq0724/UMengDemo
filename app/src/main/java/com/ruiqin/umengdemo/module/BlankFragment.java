@@ -5,7 +5,7 @@ import android.view.View;
 
 import com.ruiqin.umengdemo.R;
 import com.ruiqin.umengdemo.base.BaseFragment;
-import com.ruiqin.umengdemo.util.ShareUtils;
+import com.ruiqin.umengdemo.module.share.ShareDialog;
 
 import butterknife.OnClick;
 
@@ -21,9 +21,23 @@ public class BlankFragment extends BaseFragment {
         return R.layout.fragment_blank;
     }
 
+
     @OnClick(R.id.btn_share)
     public void onClick() {
-        ShareUtils.share2QQ(getActivity());
+        showShareDialog();
+    }
+
+
+    ShareDialog shareDialog;
+
+    /**
+     * 分享
+     */
+    private void showShareDialog() {
+        if (shareDialog == null) {
+            shareDialog = new ShareDialog(mContext);
+        }
+        shareDialog.show();
     }
 
 }

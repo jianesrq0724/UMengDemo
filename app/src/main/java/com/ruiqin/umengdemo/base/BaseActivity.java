@@ -36,7 +36,6 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
         mContext = this;
-        mBind = ButterKnife.bind(this);
         if (this instanceof BaseView) {
             mPresenter = InstanceUtil.getInstance(this, 0);
             mPresenter.setVM(this, InstanceUtil.getInstance(this, 1));
@@ -89,6 +88,7 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         } else if (layoutResID != R.layout.activity_base) {
             View addView = LayoutInflater.from(this).inflate(layoutResID, null);
             contentView.addView(addView);
+            mBind = ButterKnife.bind(this);
         }
     }
 
@@ -96,7 +96,8 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
      * add Fragment
      */
     protected void addFragment(BaseFragment fragment) {
-        getFragmentManager().beginTransaction().replace(getFragmentId(), fragment, fragment.getClass().getSimpleName()).commitAllowingStateLoss();
+//        getFragmentManager().beginTransaction().replace(getFragmentId(), fragment, fragment.getClass().getSimpleName()).commit();
+        getSupportFragmentManager().beginTransaction().replace(getFragmentId(), fragment, fragment.getClass().getSimpleName()).commitAllowingStateLoss();
     }
 
     protected abstract int getFragmentId();
@@ -107,4 +108,6 @@ public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel>
         super.onDestroy();
         mBind.unbind();
     }
+
+
 }

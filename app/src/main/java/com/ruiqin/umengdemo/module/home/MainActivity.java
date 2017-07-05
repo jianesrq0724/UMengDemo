@@ -38,14 +38,15 @@ public class MainActivity extends BaseActivity<MainPresenter, MainModel> impleme
     }
 
     @Override
+    public boolean canBack() {
+        mToolbarTitle.setText("友盟统计");
+        return false;
+    }
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 
-    @Override
-    public boolean canBack() {
-        mToolbarTitle.setText("友盟统计");
-        return false;
-    }
 }
