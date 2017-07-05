@@ -35,7 +35,7 @@ public class ShareActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_share);
+        setContentView(R.layout.dialog_share);
     }
 
     @OnClick({R.id.share_qq, R.id.share_wx_chat, R.id.share_wx_circle, R.id.share_sms, R.id.share_cancel})
